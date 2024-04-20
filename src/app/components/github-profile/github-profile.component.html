@@ -1,0 +1,50 @@
+<div class="container mt-4">
+  <!-- Search Input and Button -->
+  <div class="row mb-2">
+    <div class="col-md-6 offset-md-3">
+      <div class="input-group">
+        <input type="text" [(ngModel)]="searchTerm" (keyup.enter)="search()" class="form-control mr-4" placeholder="Enter username of GitHub">
+        <div class="input-group-append">
+          <button (click)="search()" class="btn btn-primary">Search</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <!-- Profile Section -->
+    <div class="col-md-4">
+      <div class="card mb-4">
+        <div class="card-body">
+          <h2 class="card-title">Github Profile</h2>
+          <img [src]="avatarUrl" alt="Profile Picture" class="img-fluid rounded-circle mb-3">
+          <div class="mb-3">
+            <strong>Username:</strong> {{ userDetails?.login }}
+          </div>
+          <div class="mb-3">
+            <strong>Name:</strong> {{ userDetails?.name }}
+          </div>
+          <div class="mb-3">
+            <strong>Location:</strong> {{ userDetails?.location }}
+          </div>
+          <!-- Add more profile information as needed -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Repositories Section -->
+    <div class="col-md-8">
+      <div class="card mb-4">
+        <div class="card-body">
+          <h2 class="card-title">Repositories</h2>
+          <ul class="list-group">
+            <li *ngFor="let repo of repositories" class="list-group-item">
+              <strong>{{ repo.name }}</strong> - {{ repo.description }}
+            </li>
+          </ul>
+          <!-- Add more profile information as needed -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
